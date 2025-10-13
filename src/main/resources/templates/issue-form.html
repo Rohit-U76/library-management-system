@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Issue Book</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f0f8ff; margin: 0; padding: 20px;">
+
+<div layout:fragment="content" style="max-width: 600px; margin: 0 auto;">
+
+    <!-- Card -->
+    <div style="background-color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden;">
+
+        <!-- Card Header -->
+        <div style="padding: 15px; background-color: #0d6efd;">
+            <h2 style="margin: 0; color: white;">📤 Issue Book</h2>
+        </div>
+
+        <!-- Card Body -->
+        <div style="padding: 20px;">
+            <form th:action="@{/issues}" th:object="${issueRecord}" method="post">
+                <input type="hidden" th:field="*{id}" />
+
+                <!-- Book Select -->
+                <div style="margin-bottom: 15px;">
+                    <label for="book" style="font-weight: bold; display: block; margin-bottom: 5px;">Select Book</label>
+                    <select th:field="*{book}" id="book"
+                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;"
+                            th:classappend="${#fields.hasErrors('book')} ? 'border-red' : ''">
+                        <option value="">-- Select a Book --</option>
+                        <option th:each="book : ${books}"
+                                th:value="${book.id}"
+                                th:text="${book.title} + ' (' + ${book.isbn} + ') - Qty: ' + ${book.quantity}">Book Title (ISBN)</option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('book')}" th:errors="*{book}" style="color: #dc3545; margin-top: 5px;">Book error</div>
+                </div>
+
+                <!-- User Select -->
+                <div style="margin-bottom: 15px;">
+                    <label for="user" style="font-weight: bold; display: block; margin-bottom: 5px;">Select User</label>
+                    <select th:field="*{user}" id="user"
+                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;"
+                            th:classappend="${#fields.hasErrors('user')} ? 'border-red' : ''">
+                        <option value="">-- Select a User --</option>
+                        <option th:each="user : ${users}"
+                                th:value="${user.id}"
+                                th:text="${user.name} + ' (' + ${user.email} + ')'">User Name (Email)</option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('user')}" th:errors="*{user}" style="color: #dc3545; margin-top: 5px;">User error</div>
+                </div>
+
+                <!-- Issue Date -->
+                <div style="margin-bottom: 20px;">
+                    <label for="issueDate" style="font-weight: bold; display: block; margin-bottom: 5px;">Issue Date</label>
+                    <input type="date" th:field="*{issueDate}" id="issueDate"
+                           th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                           style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;"
+                           th:classappend="${#fields.hasErrors('issueDate')} ? 'border-red' : ''">
+                    <small style="display: block; margin-top: 5px; color: #6c757d;">Due date will be automatically set 14 days later.</small>
+                    <div th:if="${#fields.hasErrors('issueDate')}" th:errors="*{issueDate}" style="color: #dc3545; margin-top: 5px;">Date error</div>
+                </div>
+
+                <!-- Buttons -->
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit"
+                            style="flex: 1; padding: 10px; background-color: #0d6efd; color: white; font-size: 16px; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+                        Issue Book <i class="fas fa-share-square"></i>
+                    </button>
+                    <a th:href="@{/issues}"
+                       style="flex: 1; padding: 10px; background-color: #6c757d; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; text-decoration: none; display: inline-block;">
+                        <i class="fas fa-times-circle"></i> Cancel
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

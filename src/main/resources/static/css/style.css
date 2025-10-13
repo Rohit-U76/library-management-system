@@ -1,0 +1,262 @@
+:root {
+    /* Professional & Colorful Theme Colors */
+    --primary-color: #4a77e3; /* Deep Blue - Main theme color */
+    --secondary-color: #6c757d; /* Standard Gray for subtle elements */
+    --accent-color: #ffc107; /* Bright Yellow/Amber - Highlights, warnings */
+    --success-color: #28a745; /* Green - Success, positive indicators */
+    --info-color: #17a2b8;   /* Cyan/Teal - Information, issued books */
+    --danger-color: #dc3545; /* Red - Danger, overdue, delete */
+
+    --bg-light: #f7f9fc; /* Very light gray/off-white background */
+    --text-dark: #343a40; /* Dark gray for main text */
+    --header-bg: #4a77e3; /* Primary color for Navbar background */
+    --card-bg: #ffffff; /* White background for cards */
+    --card-header-bg: var(--primary-color); /* Card header uses primary color */
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft, professional shadow */
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Roboto', sans-serif; /* Professional font */
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--header-bg) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 0.75rem 1rem;
+}
+
+.navbar-brand {
+    color: white !important; /* Ensure brand is white */
+    font-weight: 700;
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand i {
+    color: var(--accent-color); /* Golden icon */
+    margin-right: 8px;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 0.5rem 1rem;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Container & Layout --- */
+.container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 25px;
+    margin-bottom: 70px; /* Space for footer */
+}
+
+/* --- Card Styling --- */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    background-color: var(--card-bg);
+}
+
+.card-header {
+    background-color: var(--card-header-bg) !important;
+    color: white !important;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 15px 20px;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Dashboard Specific Stat Cards --- */
+.card-stat {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden; /* For border-start */
+}
+
+.card-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-stat .card-body {
+    padding: 20px;
+}
+
+.card-stat .card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+.card-stat .display-6 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.card-stat i {
+    opacity: 0.6;
+    font-size: 2.5rem; /* Adjusted icon size */
+}
+
+.card-stat .card-footer {
+    background-color: var(--card-bg);
+    border-top: 1px solid #eee;
+    padding: 10px 20px;
+}
+
+.card-stat .card-footer a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.card-stat .card-footer a i {
+    font-size: 1rem;
+    margin-left: 5px;
+    transition: margin-left 0.2s ease;
+}
+.card-stat .card-footer a:hover i {
+    margin-left: 10px;
+}
+
+/* Stat card border colors (Bootstrap default utility classes used here for consistency) */
+.border-primary { border-color: var(--primary-color) !important; }
+.text-primary { color: var(--primary-color) !important; }
+
+.border-success { border-color: var(--success-color) !important; }
+.text-success { color: var(--success-color) !important; }
+
+.border-info { border-color: var(--info-color) !important; }
+.text-info { color: var(--info-color) !important; }
+
+.border-danger { border-color: var(--danger-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+
+
+/* --- Buttons --- */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.btn-primary:hover {
+    background-color: #3b60d8; /* Darker blue on hover */
+    border-color: #3b60d8;
+}
+
+.btn-warning {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-dark) !important;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-warning:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+    border-color: #e0a800;
+    color: white !important;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-outline-success {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+.btn-outline-success:hover {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-outline-secondary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+.btn-outline-secondary:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-outline-light { /* Used on dashboard banner for secondary action */
+   color: white !important;
+   border-color: white !important;
+}
+.btn-outline-light:hover {
+   background-color: rgba(255,255,255,0.2) !important;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+/* --- Forms & Tables --- */
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(74, 119, 227, 0.25);
+}
+
+.table thead th {
+    background-color: #e9ecef; /* Light gray for table headers */
+    color: var(--text-dark);
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.03); /* Very light stripe */
+}
+
+.table tbody tr:hover {
+    background-color: #eef1f6; /* Slightly darker hover */
+}
+
+/* Badges for status */
+.badge.bg-primary { background-color: var(--primary-color) !important; }
+.badge.bg-success { background-color: var(--success-color) !important; }
+.badge.bg-warning { background-color: var(--accent-color) !important; color: var(--text-dark) !important; }
+.badge.bg-danger { background-color: var(--danger-color) !important; }
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--text-dark); /* Dark footer */
+    color: #e9ecef;
+    padding: 18px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}

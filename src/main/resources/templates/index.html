@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Dashboard</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f0f8ff; margin: 0; padding: 0;">
+
+<div layout:fragment="content" style="padding: 20px;">
+
+    <h1 style="margin-bottom: 1.5rem; color: #007bff; font-weight: 300;">Welcome to the Library Management Dashboard 👋</h1>
+    <hr style="margin-bottom: 3rem; border: 1px solid #ccc;">
+
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+
+        <!-- Total Books Card -->
+        <div style="flex: 1 1 22%; box-shadow: 0 0 5px rgba(0,0,0,0.1); padding: 1rem; border-left: 5px solid #0d6efd; background-color: white; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center;">
+                <div style="margin-right: 1rem;">
+                    <i class="fas fa-book" style="font-size: 3rem; color: #0d6efd;"></i>
+                </div>
+                <div>
+                    <h5 style="text-transform: uppercase; color: gray; margin-bottom: 0.5rem;">Total Books</h5>
+                    <h2 style="font-weight: bold; margin: 0;" th:text="${totalBooks ?: 0}">1,200</h2>
+                </div>
+            </div>
+            <div style="margin-top: 0.5rem;">
+                <a th:href="@{/books}" style="color: #0d6efd; font-weight: bold; text-decoration: none;">View Details <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Total Users Card -->
+        <div style="flex: 1 1 22%; box-shadow: 0 0 5px rgba(0,0,0,0.1); padding: 1rem; border-left: 5px solid #198754; background-color: white; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center;">
+                <div style="margin-right: 1rem;">
+                    <i class="fas fa-users" style="font-size: 3rem; color: #198754;"></i>
+                </div>
+                <div>
+                    <h5 style="text-transform: uppercase; color: gray; margin-bottom: 0.5rem;">Total Users</h5>
+                    <h2 style="font-weight: bold; margin: 0;" th:text="${totalUsers ?: 0}">500</h2>
+                </div>
+            </div>
+            <div style="margin-top: 0.5rem;">
+                <a th:href="@{/users}" style="color: #198754; font-weight: bold; text-decoration: none;">View Details <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Books Issued Card -->
+        <div style="flex: 1 1 22%; box-shadow: 0 0 5px rgba(0,0,0,0.1); padding: 1rem; border-left: 5px solid #0dcaf0; background-color: white; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center;">
+                <div style="margin-right: 1rem;">
+                    <i class="fas fa-share-square" style="font-size: 3rem; color: #0dcaf0;"></i>
+                </div>
+                <div>
+                    <h5 style="text-transform: uppercase; color: gray; margin-bottom: 0.5rem;">Books Issued</h5>
+                    <h2 style="font-weight: bold; margin: 0;" th:text="${totalIssued ?: 0}">85</h2>
+                </div>
+            </div>
+            <div style="margin-top: 0.5rem;">
+                <a th:href="@{/issues}" style="color: #0dcaf0; font-weight: bold; text-decoration: none;">Manage Issues <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Overdue Books Card -->
+        <div style="flex: 1 1 22%; box-shadow: 0 0 5px rgba(0,0,0,0.1); padding: 1rem; border-left: 5px solid #dc3545; background-color: white; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center;">
+                <div style="margin-right: 1rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #dc3545;"></i>
+                </div>
+                <div>
+                    <h5 style="text-transform: uppercase; color: gray; margin-bottom: 0.5rem;">Overdue Books</h5>
+                    <h2 style="font-weight: bold; margin: 0;" th:text="${totalOverdue ?: 0}">12</h2>
+                </div>
+            </div>
+            <div style="margin-top: 0.5rem;">
+                <a th:href="@{/issues}" style="color: #dc3545; font-weight: bold; text-decoration: none;">Action Required <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Quick Links -->
+    <div style="margin-top: 2rem;">
+        <div style="box-shadow: 0 0 5px rgba(0,0,0,0.1); background-color: white; padding: 1rem;">
+            <h4 style="margin-bottom: 1rem; color: black;">System Quick Links</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <a th:href="@{/books/new}" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-size: 1.1rem; border: 2px solid #ffc107; color: #ffc107; border-radius: 5px; text-decoration: none;">
+                    <i class="fas fa-plus-circle"></i> Add New Book
+                </a>
+                <a th:href="@{/users/new}" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-size: 1.1rem; border: 2px solid #198754; color: #198754; border-radius: 5px; text-decoration: none;">
+                    <i class="fas fa-user-plus"></i> Register New User
+                </a>
+                <a th:href="@{/issues/new}" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-size: 1.1rem; border: 2px solid #0dcaf0; color: #0dcaf0; border-radius: 5px; text-decoration: none;">
+                    <i class="fas fa-share-square"></i> Issue Book
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
